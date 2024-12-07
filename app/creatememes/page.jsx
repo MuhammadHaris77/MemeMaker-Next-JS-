@@ -1,9 +1,25 @@
 'use client'
 import React, { useRef, useState } from 'react'
 import Navbar from '../components/Navbar'
+import { useSearchParams } from 'next/navigation';
 
-const page =  ({ searchParams }) => {
+const page =  () => {
     //    console.log(searchParams.id,searchParams.url)
+
+    const searchParams = useSearchParams(); // Hook to access search parameters
+    const url = searchParams.get('url'); // Replace 'url' with your query parameter key
+    const id = searchParams.get('id'); // Replace 'url' with your query parameter key
+
+    React.useEffect(() => {
+        if (url && id) {
+          console.log(`URL Param: ${url}`);
+          
+          console.log(`URL Param: ${id}`);
+          // Add your logic here
+        }
+      }, [url]);
+
+    // const {url} = searchParams 
 
 const text1= useRef()
 const text2= useRef()
@@ -16,7 +32,8 @@ const generateMemes= async (e)=>{
 
 
     
-const data = await fetch(`https://api.imgflip.com/caption_image?template_id=${searchParams.id}&username=MuhammadHaris2&password=qureshi12&text0=${text1.current?.value}&text1=${text2.current?.value}` , {
+const data = await fetch(`https://api.imgflip.com/caption_image?template_id=${id}&username=MuhammadHaris2&password=qureshi12&text0=${text1.current?.value}&text1=${text2.current?.value}` , 
+    {
     method: 'POST'
 })
 const response = await data.json()
@@ -31,7 +48,7 @@ setImg(response.data.url)
             <br />
             <div className="card lg:card-side bg-base-100  my-5 m-auto  w-[60%] shadow-xl">
                 <figure style={{ width: "40%" , }}>
-                    <img src={searchParams.url}
+                    <img src={url}
                         alt="Album" />
                 </figure>
                 <div className="card-body">
