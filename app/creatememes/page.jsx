@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react'
 import Navbar from '../components/Navbar'
 import { useSearchParams } from 'next/navigation';
 
-const page =  () => {
+const Page =  () => {
     //    console.log(searchParams.id,searchParams.url)
 
     const searchParams = useSearchParams(); // Hook to access search parameters
@@ -92,4 +92,4 @@ setImg(response.data.url)
     
 }
 
-export default page
+export default Page
