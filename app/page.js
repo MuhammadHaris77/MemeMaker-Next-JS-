@@ -14,7 +14,7 @@ export default async function Home() {
 
         {
           getData && getData.map((item) => {
-            return <div className=" card bg-base-100 w-96 hover:bg-blue-100 shadow-xl m-2 p-2">
+            return <div key={item.id} className=" card bg-base-100 w-96 hover:bg-blue-100 shadow-xl m-2 p-2">
               <figure className="px-10 pt-10">
                 <img
                   src={item.url}
